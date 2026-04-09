@@ -41,8 +41,20 @@ public class Practice {
      * @throws NullPointerException if words is null
      */
     public static String shortestWord(Set<String> words) {
-        return null;
+        if (words.isEmpty()) throw new IllegalArgumentException();
+       
+        String shortest = null;
+       
+        for (String word : words) {
+            if (shortest == null
+                    || word.length() < shortest.length()
+                    || (word.length() == shortest.length() && word.compareTo(shortest) < 0)) {
+                shortest = word;
+            }
+        }
+        return shortest;
     }
+
 
     /**
      * Returns a set of all the names of people that are 18 years of age or older.
