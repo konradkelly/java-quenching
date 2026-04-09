@@ -380,6 +380,34 @@ public class Practice {
      * @return the depth of the tree, or 0 if the tree is null or the root is not present in the tree
      */
     public static <T> int maxDepth(Map<T, List<T>> tree, T root) {
-        return 0;
+        if (tree == null) return 0;
+
+
+        if (!tree.containsKey(root)) return 0;
+
+
+        int k = 0;
+        Queue<T> queue = new LinkedList<>();
+        queue.add(root);
+
+
+        while (!queue.isEmpty()) {
+            int sizeAtK = queue.size();
+            for (int i = 0; i < sizeAtK; i++) {
+                T node = queue.poll();
+                List<T> children = tree.get(node);
+
+
+                if (children != null) {
+                    for (T child : children) {
+                        queue.add(child);
+                    }
+                }
+            }
+        k++;
+    }
+
+
+return k;
     }
 }
